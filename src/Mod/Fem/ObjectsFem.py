@@ -729,6 +729,19 @@ def makeEquationElectrostatic(
         base_solver.addObject(obj)
     return obj
 
+def makeEquationMagnetostatic(
+    doc,
+    base_solver=None,
+    name="Magnetostatic"
+):
+    """makeEquationMagnetostatic(document, [base_solver], [name]):
+    creates a FEM magnetostatic equation for a solver"""
+    from femsolver.elmer.equations import magnetostatic
+    obj = magnetostatic.create(doc, name)
+    if base_solver:
+        base_solver.addObject(obj)
+    return obj
+
 
 def makeEquationFlow(
     doc,

@@ -393,6 +393,21 @@ class _EquationElectrostatic(CommandManager):
         self.is_active = "with_solver_elmer"
         self.do_activated = "add_obj_on_gui_selobj_noset_edit"
 
+class _EquationMagnetostatic(CommandManager):
+    "The FEM_EquationMagnetostatic command definition"
+
+    def __init__(self):
+        super(_EquationMagnetostatic, self).__init__()
+        self.menutext = Qt.QT_TRANSLATE_NOOP(
+            "FEM_EquationMagnetostatic",
+            "Magnetostatic equation"
+        )
+        self.tooltip = Qt.QT_TRANSLATE_NOOP(
+            "FEM_EquationMagnetostatic",
+            "Creates a FEM equation for magnetostatic"
+        )
+        self.is_active = "with_solver_elmer"
+        self.do_activated = "add_obj_on_gui_selobj_noset_edit"
 
 class _EquationElasticity(CommandManager):
     "The FEM_EquationElasticity command definition"
@@ -1135,6 +1150,10 @@ FreeCADGui.addCommand(
 FreeCADGui.addCommand(
     "FEM_EquationElectrostatic",
     _EquationElectrostatic()
+)
+FreeCADGui.addCommand(
+    "FEM_EquationMagnetostatic",
+    _EquationMagnetostatic()
 )
 FreeCADGui.addCommand(
     "FEM_EquationElasticity",

@@ -128,4 +128,12 @@ class FlowViewProxy(BaseViewProxy):
     def getIcon(self):
         return ":/icons/FEM_EquationFlow.svg"
 
+class MagnetostaticProxy(BaseProxy):
+    pass
+
+class MagnetostaticViewProxy(BaseViewProxy):
+
+    def getIcon(self):
+        return ":/icons/FEM_EquationMagnetostatic.svg"
+
 ##  @}

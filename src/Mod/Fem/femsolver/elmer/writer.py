@@ -85,6 +85,7 @@ class Writer(object):
         self._handleHeat()
         self._handleElasticity()
         self._handleElectrostatic()
+        self._handleMagnetostatic()
         self._handleFlux()
         self._handleElectricforce()
         self._handleFlow()
@@ -514,6 +515,44 @@ class Writer(object):
         s["Equation"] = "Electric Force"  # equation.Name
         s["Procedure"] = sifio.FileAttr("ElectricForce/StatElecForce")
         return s
+
+    def _handleMagnetostatic(self):
+        activeIn = []
+        for equation in self.solver.Group:
+            if femutils.is_of_type(equation, "Fem::EquationElmerMagnetostatic"):
+                if equation.References:
+                    activeIn = equation.References[0][1]
+                else:
+                    activeIn = self._getAllBodies()
+                solverSection = self._getMagnetostaticSolver(equation)
+                for body in activeIn:
+                    self._addSolver(body, solverSection)
+        if activeIn:
+            self._handleMagnetostaticConstants()
+            #self._handleElectrostaticBndConditions()
+            # self._handleElectrostaticInitial(activeIn)
+            # self._handleElectrostaticBodyForces(activeIn)
+            #self._handleElectrostaticMaterial(activeIn)
+
+    def _getMagnetostaticSolver(self, equation):
+        s = self._createLinearSolver(equation)
+        s["Equation"] = equation.Name
+        s["Procedure"] = sifio.FileAttr("MagnetoDynamics2D/MagnetoDynamics2D")
+        s["Variable"] = self._getUniqueVarName("Potential")
+        # include object options here
+        s["Displace mesh"] = False
+        s["Exec Solver"] = "Always"
+        s["Stabilize"] = equation.Stabilize
+        s["Optimize Bandwidth"] = True
+        return s
+
+    def _handleElectrostaticConstants(self):
+        self._constant(
+            "Permeability Of Vacuum",
+            self._getConstant("PermeabilityOfVacuum", "L*M/(T^2*I^2)")
+        )
+
+    # TODO make boundary conditions etc
 
     def _handleElasticity(self):
         activeIn = []

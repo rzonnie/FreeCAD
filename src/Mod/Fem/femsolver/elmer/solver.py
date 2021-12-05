@@ -31,6 +31,7 @@ __url__ = "https://www.freecadweb.org"
 from . import tasks
 from .equations import elasticity
 from .equations import electrostatic
+from .equations import magnetostatic
 from .equations import flow
 from .equations import flux
 from .equations import electricforce
@@ -54,6 +55,7 @@ class Proxy(solverbase.Proxy):
         "Heat": heat,
         "Elasticity": elasticity,
         "Electrostatic": electrostatic,
+        "Magnetostatic": magnetostatic,
         "Flux": flux,
         "Electricforce": electricforce,
         "Flow": flow,

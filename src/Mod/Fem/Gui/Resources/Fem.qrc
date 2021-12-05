@@ -40,6 +40,7 @@
         <file>icons/FEM_EquationElasticity.svg</file>
         <file>icons/FEM_EquationElectricforce.svg</file>
         <file>icons/FEM_EquationElectrostatic.svg</file>
+        <file>icons/FEM_EquationMagnetostatic.svg</file>
         <file>icons/FEM_EquationFlow.svg</file>
         <file>icons/FEM_EquationFlux.svg</file>
         <file>icons/FEM_EquationHeat.svg</file>

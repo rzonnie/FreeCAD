@@ -1,5 +1,5 @@
 # ***************************************************************************
-# *   Copyright (c) 2020 Bernd Hahnebach <bernd@bimstatik.org>              *
+# *   Copyright (c) 2017 Remi Jonkman <rb.jonkman@outlook.com>              *
 # *                                                                         *
 # *   This file is part of the FreeCAD CAx development system.              *
 # *                                                                         *
@@ -20,47 +20,33 @@
 # *   USA                                                                   *
 # *                                                                         *
 # ***************************************************************************
-""" Collection of natural constants for the Fem module.
 
-This module contains natural constants for the Fem module.
-All constants are in SI units.
-"""
-
-
-__title__ = "FEM collection of natural constants"
-__author__ = "Bernd Hahnebach"
+__title__ = "FreeCAD FEM solver Elmer equation object Magnetostatic"
+__author__ = "Remi Jonkman"
 __url__ = "https://www.freecadweb.org"
 
+## \addtogroup FEM
+#  @{
 
-def gravity():
-    # https://en.wikipedia.org/wiki/Gravitational_acceleration
-    return "9.80665 m/s^2"
-
-
-def stefan_boltzmann():
-    # https://en.wikipedia.org/wiki/Stefan-Boltzmann_constant
-    return "5.67037e-8 W/(m^2*K^4)"
+from femtools import femutils
+from . import nonlinear
+from ... import equationbase
 
 
-def vacuum_permittivity():
-    # https://forum.freecadweb.org/viewtopic.php?f=18&p=400959#p400959
-    # https://en.wikipedia.org/wiki/Permittivity#Vacuum_permittivity
-    return "8.85419e-12 s^4*A^2 / (m^3*kg)"
-
-def vacuum_permeability():
-    # https://en.wikipedia.org/wiki/Vacuum_permeability
-    return "1.25663e-6 m*kg / (s^2*A^2)"
-
-def boltzmann_constant():
-    # https://en.wikipedia.org/wiki/Boltzmann_constant
-    return "1.38065e-23 J/K"
+def create(doc, name="Magnetostatic"):
+    return femutils.createObject(
+        doc, name, Proxy, ViewProxy)
 
 
-"""
-from FreeCAD import Units
-from femtools import constants
-Units.Quantity(constants.gravity()).getValueAs("mm/s^2")
+class Proxy(nonlinear.Proxy, equationbase.MagnetostaticProxy):
 
-"""
+    Type = "Fem::EquationElmerMagnetostatic"
 
-# TODO: a unit test to be sure these values are returned!
+    def __init__(self, obj):
+        super(Proxy, self).__init__(obj)
+        obj.Priority = 20
+
+class ViewProxy(nonlinear.ViewProxy, equationbase.MagnetostaticViewProxy):
+    pass
+
+##  @}
