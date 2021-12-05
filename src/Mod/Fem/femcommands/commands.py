@@ -223,6 +223,22 @@ class _ConstraintElectrostaticPotential(CommandManager):
         self.is_active = "with_analysis"
         self.do_activated = "add_obj_on_gui_set_edit"
 
+class _ConstraintMagnetostaticVectorPotential(CommandManager):
+    "The FEM_ConstraintMagnetostaticVectorPotential command definition"
+
+    def __init__(self):
+        super(_ConstraintMagnetostaticVectorPotential, self).__init__()
+        self.menutext = Qt.QT_TRANSLATE_NOOP(
+            "FEM_ConstraintMagnetostaticVectorPotential",
+            "Constraint magnetostatic vector potential"
+        )
+        self.tooltip = Qt.QT_TRANSLATE_NOOP(
+            "FEM_ConstraintMagnetostaticVectorPotential",
+            "Creates a FEM constraint magnetostatic vector potential"
+        )
+        self.is_active = "with_analysis"
+        self.do_activated = "add_obj_on_gui_set_edit"
+
 
 class _ConstraintFlowVelocity(CommandManager):
     "The FEM_ConstraintFlowVelocity command definition"
@@ -1110,6 +1126,10 @@ FreeCADGui.addCommand(
 FreeCADGui.addCommand(
     "FEM_ConstraintElectrostaticPotential",
     _ConstraintElectrostaticPotential()
+)
+FreeCADGui.addCommand(
+    "FEM_ConstraintMagnetostaticVectorPotential",
+    _ConstraintMagnetostaticVectorPotential()
 )
 FreeCADGui.addCommand(
     "FEM_ConstraintFlowVelocity",

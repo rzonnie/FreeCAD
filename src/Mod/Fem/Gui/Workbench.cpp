@@ -46,6 +46,8 @@ using namespace FemGui;
     qApp->translate("Workbench", "&Element Geometry");
     qApp->translate("Workbench", "Electrostatic Constraints");
     qApp->translate("Workbench", "&Electrostatic Constraints");
+    qApp->translate("Workbench", "Magnetostatic Constraints");
+    qApp->translate("Workbench", "&Magnetostatic Constraints");
     qApp->translate("Workbench", "Fluid Constraints");
     qApp->translate("Workbench", "&Fluid Constraints");
     qApp->translate("Workbench", "Geometrical Constraints");
@@ -116,7 +118,12 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
     Gui::ToolBarItem* electrostat = new Gui::ToolBarItem(root);
     electrostat->setCommand("Electrostatic Constraints");
     *electrostat
-        << "FEM_ConstraintElectrostaticPotential";
+        << "FEM_ConstraintElectroStaticPotential";
+    
+    Gui::ToolBarItem* magnetostat = new Gui::ToolBarItem(root);
+    magnetostat->setCommand("Magnetostatic Constraints");
+    *magnetostat
+        << "FEM_ConstraintMagnetostaticVectorPotential";
 
     Gui::ToolBarItem* fluid = new Gui::ToolBarItem(root);
     fluid->setCommand("Fluid Constraints");
@@ -246,6 +253,11 @@ Gui::MenuItem* Workbench::setupMenuBar() const
     elec->setCommand("&Electrostatic Constraints");
     *elec
         << "FEM_ConstraintElectrostaticPotential";
+        
+    Gui::MenuItem* magn = new Gui::MenuItem;
+    magn->setCommand("&Magnetostatic Constraints");
+    *magn
+        << "FEM_ConstraintMagnetostaticVectorPotential";
 
     Gui::MenuItem* fluid = new Gui::MenuItem;
     fluid->setCommand("&Fluid Constraints");
