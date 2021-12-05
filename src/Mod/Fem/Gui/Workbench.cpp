@@ -118,7 +118,7 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
     Gui::ToolBarItem* electrostat = new Gui::ToolBarItem(root);
     electrostat->setCommand("Electrostatic Constraints");
     *electrostat
-        << "FEM_ConstraintElectroStaticPotential";
+        << "FEM_ConstraintElectrostaticPotential";
     
     Gui::ToolBarItem* magnetostat = new Gui::ToolBarItem(root);
     magnetostat->setCommand("Magnetostatic Constraints");

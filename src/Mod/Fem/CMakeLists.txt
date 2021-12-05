@@ -75,7 +75,7 @@ SET(FemExamples_SRCS
     femexamples/constraint_transform_torque.py
     femexamples/examplesgui.py
     femexamples/elmer_nonguitutorial01_eigenvalue_of_elastic_beam.py
-    femexamples/equation_s_capacitance_two_balls.py
+    femexamples/equation_electrostatics_capacitance_two_balls.py
     femexamples/equation_electrostatics_electricforce_elmer_nongui6.py
     femexamples/frequency_beamsimple.py
     femexamples/manager.py
