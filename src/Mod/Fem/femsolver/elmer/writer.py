@@ -529,7 +529,7 @@ class Writer(object):
                     self._addSolver(body, solverSection)
         if activeIn:
             self._handleMagnetostaticConstants()
-            #self._handleElectrostaticBndConditions()
+            self._handleMagnetostaticBndConditions()
             # self._handleElectrostaticInitial(activeIn)
             # self._handleElectrostaticBodyForces(activeIn)
             #self._handleElectrostaticMaterial(activeIn)
@@ -546,11 +546,25 @@ class Writer(object):
         s["Optimize Bandwidth"] = True
         return s
 
-    def _handleElectrostaticConstants(self):
+    def _handleMagnetostaticConstants(self):
         self._constant(
             "Permeability Of Vacuum",
             self._getConstant("PermeabilityOfVacuum", "L*M/(T^2*I^2)")
         )
+
+    def _handleMagnetostaticBndConditions(self):
+        for obj in self._getMember("Fem::ConstraintMagnetostaticVectorPotential"):
+            if obj.References:
+                for name in obj.References[0][1]:
+                    if obj.VectorPotentialEnabled:
+                        if hasattr(obj, "VectorPotential"):
+                            potential = self._getFromUi(obj.VectorPotential, "V*s/(m^1)", "M*L/(T^2 * I)")
+                            self._boundary(name, "Potential", potential)
+                    if obj.VectorPotentialConstant:
+                        self._boundary(name, "Potential Constant", True)
+                    if obj.MagneticInfinity:
+                        self._boundary(name, "Infinity BC", True)
+                self._handled(obj)
 
     # TODO make boundary conditions etc
 
