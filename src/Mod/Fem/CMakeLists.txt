@@ -75,7 +75,7 @@ SET(FemExamples_SRCS
     femexamples/constraint_transform_torque.py
     femexamples/examplesgui.py
     femexamples/elmer_nonguitutorial01_eigenvalue_of_elastic_beam.py
-    femexamples/equation_electrostatics_capacitance_two_balls.py
+    femexamples/equation_s_capacitance_two_balls.py
     femexamples/equation_electrostatics_electricforce_elmer_nongui6.py
     femexamples/frequency_beamsimple.py
     femexamples/manager.py
@@ -170,6 +170,7 @@ SET(FemObjects_SRCS
     femobjects/constraint_bodyheatsource.py
     femobjects/constraint_centrif.py
     femobjects/constraint_electrostaticpotential.py
+    femobjects/constraint_magnetostaticvectorpotential.py
     femobjects/constraint_flowvelocity.py
     femobjects/constraint_initialflowvelocity.py
     femobjects/constraint_sectionprint.py
@@ -602,6 +603,7 @@ SET(FemGuiViewProvider_SRCS
     femviewprovider/view_constraint_bodyheatsource.py
     femviewprovider/view_constraint_centrif.py
     femviewprovider/view_constraint_electrostaticpotential.py
+    femviewprovider/view_constraint_magnetostaticvectorpotential.py
     femviewprovider/view_constraint_flowvelocity.py
     femviewprovider/view_constraint_initialflowvelocity.py
     femviewprovider/view_constraint_sectionprint.py
