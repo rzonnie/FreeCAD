@@ -385,6 +385,7 @@ SET(FemGuiPythonUI_SRCS
     Resources/ui/ElementRotation1D.ui
     Resources/ui/FlowVelocity.ui
     Resources/ui/InitialFlowVelocity.ui
+    Resources/ui/MagnetostaticVectorPotential.ui
     Resources/ui/Material.ui
     Resources/ui/MaterialReinforcement.ui
     Resources/ui/MeshBoundaryLayer.ui

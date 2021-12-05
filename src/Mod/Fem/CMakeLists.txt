@@ -566,6 +566,7 @@ SET(FemGuiTaskPanels_SRCS
     femtaskpanels/__init__.py
     femtaskpanels/task_constraint_centrif.py
     femtaskpanels/task_constraint_electrostaticpotential.py
+    femtaskpanels/task_constraint_magnetostaticvectorpotential.py
     femtaskpanels/task_constraint_flowvelocity.py
     femtaskpanels/task_constraint_initialflowvelocity.py
     femtaskpanels/task_constraint_sectionprint.py
