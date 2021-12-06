@@ -149,16 +149,16 @@ def makeConstraintElectrostaticPotential(
 
 def makeConstraintMagnetostaticVectorPotential(
     doc,
-    name="ConstraintMagnetoStaticVectorPotential"
+    name="ConstraintMagnetostaticVectorPotential"
 ):
-    """makeConstraintMagnetoStaticVectorPotential(document, [name]):
-    makes a Fem MagnetoStaticVectorPotential object"""
+    """makeConstraintMagnetostaticVectorPotential(document, [name]):
+    makes a Fem MagnetostaticVectorPotential object"""
     obj = doc.addObject("Fem::ConstraintPython", name)
     from femobjects import constraint_magnetostaticvectorpotential
-    constraint_magnetostaticvectorpotential.ConstraintMagnetostaticPotential(obj)
+    constraint_magnetostaticvectorpotential.ConstraintMagnetostaticVectorPotential(obj)
     if FreeCAD.GuiUp:
         from femviewprovider import view_constraint_magnetostaticvectorpotential
-        view_constraint_magnetostaticvectorpotential.VPConstraintMagnetoStaticVectorPotential(obj.ViewObject)
+        view_constraint_magnetostaticvectorpotential.VPConstraintMagnetostaticVectorPotential(obj.ViewObject)
     return obj
 
 def makeConstraintFixed(

@@ -23,23 +23,23 @@
 # *                                                                         *
 # ***************************************************************************
 
-__title__ = "FreeCAD FEM constraint magnetostatic potential document object"
+__title__ = "FreeCAD FEM constraint magnetostatic vector potential document object"
 __author__ = "Markus Hovorka, Bernd Hahnebach, Remi Jonkman"
 __url__ = "https://www.freecadweb.org"
 
-## @package constraint_magnetostaticpotential
+## @package constraint_magnetostaticvectorpotential
 #  \ingroup FEM
 #  \brief constraint magnetostatic vector potential object
 
 from . import base_fempythonobject
 
 
-class ConstraintMagnetostaticPotential(base_fempythonobject.BaseFemPythonObject):
+class ConstraintMagnetostaticVectorPotential(base_fempythonobject.BaseFemPythonObject):
 
-    Type = "Fem::ConstraintMagnetostaticPotential"
+    Type = "Fem::ConstraintMagnetostaticVectorPotential"
 
     def __init__(self, obj):
-        super(ConstraintMagnetostaticPotential, self).__init__(obj)
+        super(ConstraintMagnetostaticVectorPotential, self).__init__(obj)
         self.add_properties(obj)
 
     def onDocumentRestored(self, obj):

@@ -181,6 +181,7 @@ class Writer(object):
             "Gravity": constants.gravity(),
             "StefanBoltzmann": constants.stefan_boltzmann(),
             "PermittivityOfVacuum": constants.vacuum_permittivity(),
+            "PermeabilityOfVacuum": constants.vacuum_permeability(),
             "BoltzmannConstant": constants.boltzmann_constant(),
         }
 
@@ -566,7 +567,21 @@ class Writer(object):
                         self._boundary(name, "Infinity BC", True)
                 self._handled(obj)
 
-    # TODO make boundary conditions etc
+    def _handleElectrostaticMaterial(self, bodies):
+        for obj in self._getMember("App::MaterialObject"):
+            m = obj.Material
+            refs = (
+                obj.References[0][1]
+                if obj.References
+                else self._getAllBodies())
+            for name in (n for n in refs if n in bodies):
+                if "RelativePermeability" in m:
+                    self._material(
+                        name, "Relative Permeability",
+                        float(m["RelativePermeability"])
+                    )
+
+    # TODO magnetostatic body forces
 
     def _handleElasticity(self):
         activeIn = []
