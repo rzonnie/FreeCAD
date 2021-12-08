@@ -100,6 +100,7 @@ SET (MaterialLib_Files
     StandardMaterial/Steel-G300.FCMat
     StandardMaterial/Steel-G30Mn5.FCMat
     StandardMaterial/Steel-Generic.FCMat
+    StandardMaterial/Steel-N10.FCMat
     StandardMaterial/Steel-S185.FCMat
     StandardMaterial/Steel-S235JO.FCMat
     StandardMaterial/Steel-S235JR.FCMat

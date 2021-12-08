@@ -159,11 +159,28 @@
     RelativePermittivity:
       Type: 'Float'
       URL: 'https://en.wikipedia.org/wiki/Relative_permittivity'
-      Description: "The ratio to the permittivity of the vacuum"
+      Description: "The ratio to the permittivity of the vacuum [unitless]"
     ElectricalConductivity:
       Type: 'Quantity'
       URL: 'https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity'
       Description: "The electrical conductivity in [FreeCAD ElectricalConductivity unit]"
+- Magnetic:
+    RelativePermeability:
+      Type: 'Float'
+      URL: 'https://en.wikipedia.org/wiki/Relative_permeability'
+      Description: "The ratio to the permeability of the vacuum [unitless]"
+    MagnetizationX:
+      Type: 'Float'
+      URL: ''
+      Description: "The magnetization of the material in the X direction [unitless]"
+    MagnetizationY:
+      Type: 'Float'
+      URL: ''
+      Description: "The magnetization of the material in the Y direction [unitless]"
+    MagnetizationZ:
+      Type: 'Float'
+      URL: ''
+      Description: "The magnetization of the material in the Z direction [unitless]"
 - Architectural:
     Color:
       Type:  'String'

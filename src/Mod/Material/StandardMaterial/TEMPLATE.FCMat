@@ -119,6 +119,20 @@ RelativePermittivity =
 ; https://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity
 ElectricalConductivity =
 
+[Magnetic]
+; The ratio to the permeability of the vacuum
+; https://en.wikipedia.org/wiki/Relative_permeability
+RelativePermeability =
+
+; The magnetization strength in the X direction
+MagnetizationX =
+
+; The magnetization strength in the Y direction
+MagnetizationY =
+
+; The magnetization strength in the Z direction
+MagnetizationZ =
+
 
 [Architectural]
 ; Description to be updated

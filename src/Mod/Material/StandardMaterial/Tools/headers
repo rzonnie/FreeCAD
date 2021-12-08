@@ -25,6 +25,11 @@ YoungsModulus
 SpecificHeat
 ThermalConductivity
 ThermalExpansionCoefficient
+RelativePermittivity
+RelativePermeability
+MagnetizationX
+MagnetizationY
+MagnetizationZ
 Color
 EnvironmentalEfficiencyClass
 ExecutionInstructions
