@@ -38,6 +38,8 @@ SET (MaterialLib_Files
     StandardMaterial/PA6-Generic.FCMat
     StandardMaterial/PET-Generic.FCMat
     StandardMaterial/PLA-Generic.FCMat
+    StandardMaterial/PM-Plus.FCMat
+    StandardMaterial/PM-Min.FCMat
     StandardMaterial/PP-Generic.FCMat
     StandardMaterial/PTFE-Generic.FCMat
     StandardMaterial/PVC-Generic.FCMat

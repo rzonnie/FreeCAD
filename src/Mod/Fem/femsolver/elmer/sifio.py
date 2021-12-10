@@ -119,6 +119,7 @@ class Builder(object):
         self._constants = createSection(CONSTANTS)
         self._bodies = collections.OrderedDict()
         self._boundaries = collections.OrderedDict()
+        self._materials = collections.OrderedDict()
 
     def getBoundaryNames(self):
         return self._boundaries.keys()

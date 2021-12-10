@@ -189,6 +189,22 @@ class _ConstraintBodyHeatSource(CommandManager):
         self.is_active = "with_analysis"
         self.do_activated = "add_obj_on_gui_noset_edit"
 
+class _ConstraintBodyCurrentDensity(CommandManager):
+    "The FEM_ConstraintBodyCurrentDensity command definition"
+
+    def __init__(self):
+        super(_ConstraintBodyCurrentDensity, self).__init__()
+        self.pixmap = "FEM_EquationMagnetostatic"  # the magnetostatic icon is used
+        self.menutext = Qt.QT_TRANSLATE_NOOP(
+            "FEM_ConstraintBodyCurrentDensity",
+            "Constraint body current density"
+        )
+        self.tooltip = Qt.QT_TRANSLATE_NOOP(
+            "FEM_ConstraintBodyCurrentDensity",
+            "Creates a FEM constraint body current density"
+        )
+        self.is_active = "with_analysis"
+        self.do_activated = "add_obj_on_gui_noset_edit"
 
 class _ConstraintCentrif(CommandManager):
     "The FEM_ConstraintCentrif command definition"
@@ -1118,6 +1134,10 @@ FreeCADGui.addCommand(
 FreeCADGui.addCommand(
     "FEM_ConstraintBodyHeatSource",
     _ConstraintBodyHeatSource()
+)
+FreeCADGui.addCommand(
+    "FEM_ConstraintBodyCurrentDensity",
+    _ConstraintBodyCurrentDensity()
 )
 FreeCADGui.addCommand(
     "FEM_ConstraintCentrif",

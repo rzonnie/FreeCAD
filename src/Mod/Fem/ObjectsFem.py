@@ -97,6 +97,19 @@ def makeConstraintBodyHeatSource(
         viewprov.VPConstraintBodyHeatSource(obj.ViewObject)
     return obj
 
+def makeConstraintBodyCurrentDensity(
+    doc,
+    name="ConstraintBodyCurrentDensity"
+):
+    """makeConstraintBodyCurrentDensity(document, [name]):
+    makes a Fem ConstraintBodyCurrentDensity object"""
+    obj = doc.addObject("Fem::ConstraintPython", name)
+    from femobjects import constraint_bodycurrentdensity
+    constraint_bodycurrentdensity.ConstraintBodyCurrentDensity(obj)
+    if FreeCAD.GuiUp:
+        from femviewprovider import view_constraint_bodycurrentdensity as viewprov
+        viewprov.VPConstraintBodyCurrentDensity(obj.ViewObject)
+    return obj
 
 def makeConstraintCentrif(
     doc,

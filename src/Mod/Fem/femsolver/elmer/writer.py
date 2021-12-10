@@ -532,15 +532,14 @@ class Writer(object):
             self._handleMagnetostaticConstants()
             self._handleMagnetostaticBndConditions()
             # self._handleElectrostaticInitial(activeIn)
-            # self._handleElectrostaticBodyForces(activeIn)
-            #self._handleElectrostaticMaterial(activeIn)
+            # self._handleMagnetostaticBodyForces(activeIn)
+            self._handleMagnetostaticMaterial(activeIn)
 
     def _getMagnetostaticSolver(self, equation):
         s = self._createLinearSolver(equation)
         s["Equation"] = equation.Name
         s["Procedure"] = sifio.FileAttr("MagnetoDynamics2D/MagnetoDynamics2D")
         s["Variable"] = self._getUniqueVarName("Potential")
-        # include object options here
         s["Displace mesh"] = False
         s["Exec Solver"] = "Always"
         s["Stabilize"] = equation.Stabilize
@@ -567,7 +566,7 @@ class Writer(object):
                         self._boundary(name, "Infinity BC", True)
                 self._handled(obj)
 
-    def _handleElectrostaticMaterial(self, bodies):
+    def _handleMagnetostaticMaterial(self, bodies):
         for obj in self._getMember("App::MaterialObject"):
             m = obj.Material
             refs = (
@@ -580,8 +579,32 @@ class Writer(object):
                         name, "Relative Permeability",
                         float(m["RelativePermeability"])
                     )
+                if "MagnetizationX" in m:
+                    self._material(
+                        name, "Magnetization 1",
+                        float(m["MagnetizationX"])
+                    )
+                if "MagnetizationY" in m:
+                    self._material(
+                        name, "Magnetization 2",
+                        float(m["MagnetizationY"])
+                    )
+                if "MagnetizationZ" in m:
+                    self._material(
+                        name, "Magnetization 3",
+                        float(m["MagnetizationZ"])
+                    )
 
-    # TODO magnetostatic body forces
+    def _handleMagnetostaticBodyForces(self, bodies):
+        obj = self._getSingleMember("Fem::ConstraintCurrentDensity")
+        if obj is not None:
+            for name in bodies:
+                heatSource = self._getFromUi(obj.HeatSource, "W/kg", "L^2*T^-3")
+                # according Elmer forum W/kg is correct
+                # http://www.elmerfem.org/forum/viewtopic.php?f=7&t=1765
+                # 1 watt = kg * m2 / s3 ... W/kg = m2 / s3
+                self._bodyForce(name, "Heat Source", heatSource)
+            self._handled(obj)
 
     def _handleElasticity(self):
         activeIn = []
