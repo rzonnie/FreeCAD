@@ -194,7 +194,7 @@ class _ConstraintBodyCurrentDensity(CommandManager):
 
     def __init__(self):
         super(_ConstraintBodyCurrentDensity, self).__init__()
-        self.pixmap = "FEM_EquationMagnetostatic"  # the magnetostatic icon is used
+        self.pixmap = "FEM_ConstraintCurrentDensity"
         self.menutext = Qt.QT_TRANSLATE_NOOP(
             "FEM_ConstraintBodyCurrentDensity",
             "Constraint body current density"
@@ -244,6 +244,7 @@ class _ConstraintMagnetostaticVectorPotential(CommandManager):
 
     def __init__(self):
         super(_ConstraintMagnetostaticVectorPotential, self).__init__()
+        self.pixmap = "FEM_ConstraintVectorPotential"
         self.menutext = Qt.QT_TRANSLATE_NOOP(
             "FEM_ConstraintMagnetostaticVectorPotential",
             "Constraint magnetostatic vector potential"

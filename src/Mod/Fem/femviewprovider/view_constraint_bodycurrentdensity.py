@@ -31,8 +31,15 @@ __url__ = "https://www.freecadweb.org"
 #  \ingroup FEM
 #  \brief view provider for the constraint body current density object
 
+from femtaskpanels import task_constraint_currentdensity
 from . import view_base_femconstraint
 
 class VPConstraintBodyCurrentDensity(view_base_femconstraint.VPBaseFemConstraint):
 
-    pass
+    def setEdit(self, vobj, mode=0):
+        view_base_femconstraint.VPBaseFemConstraint.setEdit(
+            self,
+            vobj,
+            mode,
+            task_constraint_currentdensity._TaskPanel
+        )

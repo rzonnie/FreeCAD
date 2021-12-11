@@ -376,6 +376,7 @@ INSTALL(FILES ${FemGuiIcon_SVG} DESTINATION "${CMAKE_INSTALL_DATADIR}/Mod/Fem/Re
 # see https://forum.freecadweb.org/viewtopic.php?f=10&t=25833
 SET(FemGuiPythonUI_SRCS
     Resources/ui/ConstraintCentrif.ui
+    Resources/ui/ConstraintCurrentDensity.ui
     Resources/ui/ConstraintTie.ui
     Resources/ui/ConstraintSectionPrint.ui
     Resources/ui/ElectrostaticPotential.ui

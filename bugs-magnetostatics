@@ -1,0 +1,11 @@
+Bugs:
+	- Constraint: Current Density Icon not found
+	- Units for boundary conditions and constraints are incorrect
+	- BC: Icon not found
+	- PM materials are not yet fully correct
+		- Add the possibility of B-H curves
+	- Adding faces to BC and constraints required first clicking the face and then clicking add. Opposite to what is normal.	
+
+Required features:
+	- Post processing step to find the B field
+	- Add mortar boundary condition

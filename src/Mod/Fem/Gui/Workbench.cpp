@@ -124,7 +124,6 @@ Gui::ToolBarItem* Workbench::setupToolBars() const
     magnetostat->setCommand("Magnetostatic Constraints");
     *magnetostat
         << "FEM_ConstraintMagnetostaticVectorPotential"
-        << "Separator"
         << "FEM_ConstraintBodyCurrentDensity";
 
     Gui::ToolBarItem* fluid = new Gui::ToolBarItem(root);
@@ -260,7 +259,6 @@ Gui::MenuItem* Workbench::setupMenuBar() const
     magn->setCommand("&Magnetostatic Constraints");
     *magn
         << "FEM_ConstraintMagnetostaticVectorPotential"
-        << "Separator"
         << "FEM_ConstraintBodyCurrentDensity";
 
     Gui::MenuItem* fluid = new Gui::MenuItem;
