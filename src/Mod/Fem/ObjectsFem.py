@@ -768,6 +768,18 @@ def makeEquationMagnetostatic(
         base_solver.addObject(obj)
     return obj
 
+def makeEquationMagnetoDynamicCalculateField(
+    doc,
+    base_solver=None,
+    name="MagnetoDynamicCalculateField"
+):
+    """makeEquationMagnetoDynamicCalculateField(document, [base_solver], [name]):
+    creates a solver to calculate the derive magnetodynamic fields"""
+    from femsolver.elmer.equations import magnetodynamiccalculatefield
+    obj = magnetodynamiccalculatefield.create(doc, name)
+    if base_solver:
+        base_solver.addObject(obj)
+    return obj
 
 def makeEquationFlow(
     doc,

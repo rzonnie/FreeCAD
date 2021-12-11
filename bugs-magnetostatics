@@ -9,3 +9,5 @@ Bugs:
 Required features:
 	- Post processing step to find the B field
 	- Add mortar boundary condition
+	- Add Lorentz force body force
+	- Add imaginary current density body force

@@ -426,6 +426,24 @@ class _EquationElectrostatic(CommandManager):
         self.is_active = "with_solver_elmer"
         self.do_activated = "add_obj_on_gui_selobj_noset_edit"
 
+
+class _EquationMagnetoDynamicCalculateField(CommandManager):
+    "The FEM_EquationMagnetoDynamicCalculateField command definition"
+
+    def __init__(self):
+        super(_EquationMagnetoDynamicCalculateField, self).__init__()
+        self.menutext = Qt.QT_TRANSLATE_NOOP(
+            "FEM_EquationMagnetoDynamicCalculateField",
+            "Magneto dynamic calculate field equation"
+        )
+        self.tooltip = Qt.QT_TRANSLATE_NOOP(
+            "FEM_EquationMagnetoDynamicCalculateField",
+            "Creates a FEM equation to calculate derived fields"
+        )
+        self.is_active = "with_solver_elmer"
+        self.do_activated = "add_obj_on_gui_selobj_noset_edit"
+
+
 class _EquationMagnetostatic(CommandManager):
     "The FEM_EquationMagnetostatic command definition"
 
@@ -1195,6 +1213,10 @@ FreeCADGui.addCommand(
 FreeCADGui.addCommand(
     "FEM_EquationMagnetostatic",
     _EquationMagnetostatic()
+)
+FreeCADGui.addCommand(
+    "FEM_EquationMagnetoDynamicCalculateField",
+    _EquationMagnetoDynamicCalculateField()
 )
 FreeCADGui.addCommand(
     "FEM_EquationElasticity",

@@ -86,6 +86,7 @@ class Writer(object):
         self._handleElasticity()
         self._handleElectrostatic()
         self._handleMagnetostatic()
+        self._handleMagnetoDynamicCalculateField()
         self._handleFlux()
         self._handleElectricforce()
         self._handleFlow()
@@ -536,7 +537,7 @@ class Writer(object):
             self._handleMagnetostaticMaterial(activeIn)
 
     def _getMagnetostaticSolver(self, equation):
-        s = self._createLinearSolver(equation)
+        s = self._createNonlinearSolver(equation)
         s["Equation"] = equation.Name
         s["Procedure"] = sifio.FileAttr("MagnetoDynamics2D/MagnetoDynamics2D")
         s["Variable"] = self._getUniqueVarName("Potential")
@@ -606,6 +607,24 @@ class Writer(object):
                 currentDensity = self._getFromUi(obj.CurrentDensity, "A*m^-2", "I*L^-2")
                 self._bodyForce(name, "Current Density", currentDensity)
             self._handled(obj)
+
+    def _handleMagnetoDynamicCalculateField(self):
+        activeIn = []
+        for equation in self.solver.Group:
+            if femutils.is_of_type(equation, "Fem::EquationElmerMagnetoDynamicCalculateField"):
+                activeIn = self._getAllBodies()
+                solverSection = self._getMagnetoDynamicCalculateFieldSolver(equation)
+                for body in activeIn:
+                    self._addSolver(body, solverSection)
+
+    def _getMagnetoDynamicCalculateFieldSolver(self, equation):
+        s = self._createNonlinearSolver(equation)
+        s["Equation"] = equation.Name
+        s["Procedure"] = sifio.FileAttr("MagnetoDynamics/MagnetoDynamicsCalcFields")
+        s["Exec Solver"] = "Always"
+        s["Stabilize"] = equation.Stabilize
+        s["Optimize Bandwidth"] = True
+        return s
 
     def _handleElasticity(self):
         activeIn = []

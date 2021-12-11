@@ -136,4 +136,12 @@ class MagnetostaticViewProxy(BaseViewProxy):
     def getIcon(self):
         return ":/icons/FEM_EquationMagnetostatic.svg"
 
+class MagnetoDynamicCalculateFieldProxy(BaseProxy):
+    pass
+
+class MagnetoDynamicCalculateFieldViewProxy(BaseViewProxy):
+
+    def getIcon(self):
+        return ":/icons/FEM_EquationMagnetoDynamicCalculateField.svg"
+
 ##  @}
